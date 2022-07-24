@@ -22,7 +22,7 @@ public class BrowserFactory {
    
     //Create WebDriver Object for a given Browser;
     public WebDriver createBrowserInstance(String browser) throws MalformedURLException {
-        WebDriver driver;
+        WebDriver driver=null;
 
         if(browser.equalsIgnoreCase("Chrome")){
 
