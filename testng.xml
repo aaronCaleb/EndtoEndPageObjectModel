@@ -5,14 +5,14 @@
         </listener>
     </listeners>
     <test name = "EndToEndAutomationAccordionPage">
-        <parameter name="browser" value="remote-chrome"/>
+    
         <classes>
             <class name = "testcases.AccordionPageFunctionTest" />
         </classes>
     </test>
 
     <test name="EndToEndAutomationContactFormPage">
-        <parameter name="browser" value="remote-firefox"/>
+        
         <classes>
             <class name="testcases.ContactFormPageTest">
             </class>
@@ -20,7 +20,7 @@
     </test>
 
     <test name="EndToEndAutomationSignInPageExcel">
-    <parameter name="browser" value="remote-edge"/>
+   
     <classes>
         <class name="testcases.SignInTestUsingExcelFile">
         </class>
@@ -28,7 +28,7 @@
     </test>
 
     <test name="EndToEndAutomationSignInPageHashMap">
-        <parameter name="browser" value="remote-firefox"/>
+        
         <classes>
             <class name="testcases.SignInTestUsingHashMapDataProvider">
             </class>
@@ -36,7 +36,7 @@
     </test>
 
     <test name="EndToEndAutomationUploadPage">
-        <parameter name="browser" value="remote-chrome"/>
+        
         <classes>
             <class name="testcases.UpLoadPageTest">
             </class>
