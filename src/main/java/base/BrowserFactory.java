@@ -19,49 +19,28 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class BrowserFactory {
-    public WebDriver driver;
+   
     //Create WebDriver Object for a given Browser;
     public WebDriver createBrowserInstance(String browser) throws MalformedURLException {
-        driver=DriverFactory.getInstance().getDriverThreadLocal();
+        Webdriver driver;
 
         if(browser.equalsIgnoreCase("Chrome")){
 
-            //System.setProperty("WebDriver.chrome.silenceOutput", "true");
-            try {
-                WebDriverManager.chromedriver().setup();
-                DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-                desiredCapabilities.setBrowserName(Browser.CHROME.browserName());
-                desiredCapabilities.setVersion("103");
-                //desiredCapabilities.setPlatform(Platform.valueOf("Windows 11"));
-                DriverFactory.getInstance()
-                        .setDriverThreadLocal
-                                (new RemoteWebDriver(new URL("http://192.168.1.111:4444/"), desiredCapabilities));
-            }catch(MalformedURLException e){
-                ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Browser start-up failure due to : " +e);
-            }
+           WebDriverManager.chromedriver().setup();
+            System.setProperty("WebDriver.chrome.silenceOutput", "true");
+            ChromeOptions chromeOptions=new ChromeOptions();
+            chromeOptions.addArguments("--incognito");
+            driver=new ChromeDriver(chromeOptions)
 
         } else if (browser.equalsIgnoreCase("Firefox")) {
-            try {
                 WebDriverManager.firefoxdriver().setup();
-                DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-                desiredCapabilities.setBrowserName(Browser.FIREFOX.browserName());
-                desiredCapabilities.setVersion("102");
-                DriverFactory.getInstance().setDriverThreadLocal
-                        (new RemoteWebDriver(new URL("http://192.168.1.111:4444"), desiredCapabilities));
-            }catch (MalformedURLException e){
-                ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Browser start-up failure due to : " +e);
+                driver=new FirefoxDriver();
             }
 
         }else if(browser.equalsIgnoreCase("edge")) {
-            try {
+           
                 WebDriverManager.edgedriver().setup();
-                DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-                desiredCapabilities.setBrowserName(Browser.EDGE.browserName());
-                DriverFactory.getInstance().setDriverThreadLocal
-                        (new RemoteWebDriver(new URL("http://192.168.1.111:4444"), desiredCapabilities));
-            }catch (MalformedURLException e){
-                ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Browser start-up failure due to : " +e);
-            }
+                driver=new EdgeDriver();
         }
 
         return driver;
