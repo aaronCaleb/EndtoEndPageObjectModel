@@ -30,12 +30,12 @@ public class BrowserFactory {
             System.setProperty("WebDriver.chrome.silenceOutput", "true");
             ChromeOptions chromeOptions=new ChromeOptions();
             chromeOptions.addArguments("--incognito");
-            driver=new ChromeDriver(chromeOptions)
+            driver=new ChromeDriver(chromeOptions);
 
         } else if (browser.equalsIgnoreCase("Firefox")) {
                 WebDriverManager.firefoxdriver().setup();
                 driver=new FirefoxDriver();
-            }
+      
 
         }else if(browser.equalsIgnoreCase("edge")) {
            
